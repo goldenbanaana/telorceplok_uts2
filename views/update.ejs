@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <div class="tab">
+        <a href="/" class="tablinks" >Home</a>
+        <a href="/insertpage" class="tablinks" >Motor Insert</a>
+    </div>
+    // This is the form for updating the data
+    <form action="/update/<%= data[0].ID %>" method="POST">
+        <label for="nama_motor">Motor Name</label>
+        <input type="text" name="nama_motor" id="nama_motor" value="<%= data[0].nama_motor %>"><br>
+        <label for="merk_motor">Motor Model</label>
+        <input type="text" name="merk_motor" id="merk_motor" value="<%= data[0].merk_motor %>"><br>
+        <label for="harga_motor">Motor Price</label>
+        <input type="text" name="harga_motor" id="harga_motor" value="<%= data[0].harga_motor %>"><br>
+        <input type="submit" value="Submit">
+</body>
+</html>

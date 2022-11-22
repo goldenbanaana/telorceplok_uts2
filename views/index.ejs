@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor</title>
+</head>
+<body>
+    <div class="tab">
+        <a href="/" class="tablinks" >Home</a>
+        <a href="/insertpage" class="tablinks" >Motor Insert</a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>Motor ID</th>
+            <th>Motor Name</th>
+            <th>Motor Model</th>
+            <th>Motor Price</th>
+            <th>Action</th>
+        </tr>
+        <% for(var i=0; i<data.length; i++){ %>
+            <tr>
+                <td><%= data[i].ID %></td>
+                <td><%= data[i].nama_motor %></td>
+                <td><%= data[i].merk_motor %></td>
+                <td><%= data[i].harga_motor %></td>
+                <td>
+                    <a href="/delete/<%= data[i].ID %>">Delete</a>
+                    <a href="/updatepage/<%= data[i].ID %>">Update</a>
+                </td>
+            </tr>
+        <% } %>
+</body>
+</html>
