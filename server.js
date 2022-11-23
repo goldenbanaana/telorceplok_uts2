@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = express.Router();
-const port = 4000
+const port = 3000
 const bodyParser = require('body-parser');
 
 const sqlite3 = require('sqlite3').verbose();
@@ -21,7 +21,7 @@ app.listen(port, function() {
 })
 
 router.get('/', function(req, res) {
-    //read data from sqlite and send to index.ejs
+
     db.all('SELECT * FROM motor', function(err, rows) {
         res.render('index', { data: rows });
     });
@@ -32,14 +32,14 @@ router.get('/insertpage', function(req, res) {
 })
 
 router.get('/updatepage/:id', function(req, res) {
-    //create a query to get data from sqlite
+
     db.all('SELECT * FROM motor WHERE id = ?', [req.params.id], function(err, rows) {
         res.render('update', { data: rows });
     });
 })
 
 router.post('/insert', function(req, res) {
-    //create insert query
+
     var sql = "INSERT INTO motor (nama_motor, merk_motor, harga_motor) VALUES (?,?,?)";
     db.run(sql, [req.body.nama_motor, req.body.merk_motor, req.body.harga_motor], function(err) {
         if (err) {
@@ -50,7 +50,7 @@ router.post('/insert', function(req, res) {
 })
 
 router.post('/update/:id', function(req, res) {
-    //create update query
+
     var sql = "UPDATE motor SET nama_motor = ?, merk_motor = ?, harga_motor = ? WHERE id = ?";
     db.run(sql, [req.body.nama_motor, req.body.merk_motor, req.body.harga_motor, req.params.id], function(err) {
         if (err) {
@@ -61,9 +61,9 @@ router.post('/update/:id', function(req, res) {
     );
 })
 
-//create router for delete
+
 router.get('/delete/:id', function(req, res) {
-    //create delete query
+
     var sql = "DELETE FROM motor WHERE id = ?";
     db.run(sql, [req.params.id], function(err) {
         if (err) {
